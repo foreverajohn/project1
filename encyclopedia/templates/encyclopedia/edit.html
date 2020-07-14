@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit Page
+{% endblock %}
+
+{% block body %}
+        <h1>Edit Page</h1>
+    <form action="{% url 'edit' entry %}" method="post" name="edit-entry">
+        {% csrf_token %}
+        <div class="form-group col-6">
+            <input type="text" class="form-control" id="EditPageTitleInput1" placeholder="Title" name="edit-title" value="{{ entry }}">
+        </div>
+        <div class="form-group col-6">
+            <textarea class="form-control" id="EditContentTextarea1" name="edited-content" rows="6">{{ text }}</textarea>
+        </div>
+        <div class="form-group col-6">
+            <small class="text-muted">Remember to use <a href="https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax">markdown</a> language!</small>
+        </div>
+        <button type="submit" class="btn btn-primary ml-3">Save changes</button>
+    </form>
+{% endblock %}

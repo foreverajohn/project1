@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create a New Page
+{% endblock %}
+
+{% block body %}
+        {% if message %}
+        <div class="alert alert-warning mt-3 mr-3 mb-0" role="alert">
+            {{ message }}
+        </div>
+        {% endif %}
+        <h1>New Page</h1>
+    <form class="col-6 mt-4" action="{% url 'new' %}" method="post" name="new-entry">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" id="NewPageTitleInput1" placeholder="Document title" name="title">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" id="NewPageContentTextarea1" placeholder="Entry content" name="content" rows="6"></textarea>
+        </div>
+        <div class="form-group">
+            <small class="text-muted">Remember to use <a href="https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax">markdown</a> language!</small>
+        </div>
+        <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>
+    </form>
+{% endblock %}
